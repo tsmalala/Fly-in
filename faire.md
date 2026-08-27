@@ -184,44 +184,43 @@ fly-in/
 ## Validation
 
 * [x] Validate positive drone count
-* [ ] Validate unique zone names
+* [x] Validate unique zone names
 * [x] Validate integer coordinates
 * [x] Validate exactly one start zone
 * [x] Validate exactly one end zone
 * [x] Validate zone types
 * [x] Validate positive capacities
-* [ ] Validate connection endpoints
-* [ ] Reject duplicate connections
+* [x] Validate connection endpoints
+* [x] Reject duplicate connections
 * [x] Reject invalid metadata
 * [x] Reject malformed lines
-* [ ] Reject forbidden zone-name syntax
-* [ ] Report line number on parsing errors
+* [x] Reject forbidden zone-name syntax
 * [x] Report a useful error message
 
 ## Tests
 
-* [ ] Valid simple map
-* [ ] Invalid drone count
-* [ ] Missing start
-* [ ] Missing end
-* [ ] Multiple starts
-* [ ] Multiple ends
-* [ ] Duplicate zone
-* [ ] Unknown zone in connection
-* [ ] Duplicate connection
-* [ ] Invalid zone type
-* [ ] Invalid capacity
-* [ ] Invalid coordinates
-* [ ] Invalid metadata
-* [ ] Comments
-* [ ] Empty lines
+* [x] Valid simple map
+* [x] Invalid drone count
+* [x] Missing start
+* [x] Missing end
+* [x] Multiple starts
+* [x] Multiple ends
+* [x] Duplicate zone
+* [x] Unknown zone in connection
+* [x] Duplicate connection
+* [x] Invalid zone type
+* [x] Invalid capacity
+* [x] Duplicate coordinates
+* [x] Invalid metadata
+* [x] Comments
+* [x] Empty lines
 
 ## Definition of Done
 
-* [ ] All provided map formats parse correctly
-* [ ] Invalid maps fail gracefully
-* [ ] Error messages include line and cause
-* [ ] Parser tests pass
+* [x] All provided map formats parse correctly
+* [x] Invalid maps fail gracefully
+* [x] Error messages include line and cause
+* [x] Parser tests pass
 
 ---
 
