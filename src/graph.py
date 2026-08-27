@@ -5,15 +5,20 @@ from collections import Counter
 
 class Graph:
     """
-    _summary_
+    Represents a graph composed of zones and connections.
+
+    The graph manages a collection of zones and the connections between them.
+    It also keeps track of the number of start and end hubs to ensure that
+    the graph contains exactly one of each.
     """
     def __init__(self, zones: list[Zone],
                  connections: list[Connection]) -> None:
-        """_summary_
+        """
+        Initializes a graph with a collection of zones and connections.
 
         Args:
-            zones (list[Zone]): _description_
-            connections (list[Connection]): _description_
+            zones (list[Zone]): The zones that make up the graph.
+            connections (list[Connection]): The connections between the zones.
         """
         self.zones: list[Zone] = zones
         self.connections: list[Connection] = connections
@@ -22,7 +27,17 @@ class Graph:
 
     def retrieve_zone_by_name(self, zone_name: str) -> Zone | None:
         """
-        Retrieve a zone by its name.
+        Retrieves a zone based on its name.
+
+        Searches through the collection of zones and returns the zone
+        whose name matches the given name. Returns None if no matching
+        zone is found.
+
+        Args:
+            zone_name (str): The name of the zone to retrieve.
+
+        Returns:
+            Zone | None: The matching zone, or None if no zone is found.
         """
         for zone in self.zones:
             if zone.name == zone_name:
@@ -36,6 +51,14 @@ class Graph:
         Searches through the collection of zones and returns the zone
         whose coordinates match the given x and y values. Returns None
         if no zone is found at the specified position.
+
+        Args:
+            x (int): The x-coordinate of the zone.
+            y (int): The y-coordinate of the zone.
+
+        Returns:
+            Zone | None: The zone found at the specified position,
+            or None if no matching zone exists.
         """
         for element in self.zones:
             if element.x == x and element.y == y:
@@ -48,9 +71,15 @@ class Graph:
 
         Checks whether a zone with the same name already exists before adding
         the new zone. Raises a ValueError if a duplicate zone is detected.
+
+        Args:
+            zone (Zone): The zone to add.
+
+        Raises:
+            ValueError: If a zone with the same name already exists.
         """
         if self.retrieve_zone_by_name(zone.name):
-            raise ValueError(f"[ERROR]: zone '{zone.name}' is dublicate.")
+            raise ValueError(f"[ERROR]: zone '{zone.name}' is duplicate.")
         if self.retrieve_zone_by_position(zone.x, zone.y):
             raise ValueError(f"[ERROR]: coordinates of '{zone.name}' already exist.")
         self.zones.append(zone)
@@ -62,6 +91,13 @@ class Graph:
         Searches through the collection of connections and returns the connection
         whose zones match the given zones, regardless of their order. Returns None
         if no matching connection is found.
+
+        Args:
+            zones (list[Zone]): The zones associated with the connection.
+
+        Returns:
+            Connection | None: The matching connection, or None if no connection
+            exists between the specified zones.
         """
         for element in self.connections:
             if Counter(element.zones) == Counter(zones):
@@ -83,7 +119,9 @@ class Graph:
             ValueError: If a connection between the specified zones already exists.
         """
         if self.retrieve_connection_by_zones(connection.zones):
-            raise ValueError(f"[ERROR]: {connection.zones[0].name}-{connection.zones[1].name} connection is duplicate.")
+            raise ValueError(f"[ERROR]: connection between "
+                             f"'{connection.zones[0].name}' and '{connection.zones[1].name}' "
+                             f"already exists.")
         self.connections.append(connection)
 
     def validate_end_start_hub(self) -> None:
