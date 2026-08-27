@@ -167,36 +167,36 @@ fly-in/
 
 ## Zone metadata
 
-* [ ] Parse `zone=normal`
-* [ ] Parse `zone=blocked`
-* [ ] Parse `zone=restricted`
-* [ ] Parse `zone=priority`
-* [ ] Parse `color=...`
-* [ ] Parse `max_drones=...`
-* [ ] Apply default values
-* [ ] Support metadata in any order
+* [x] Parse `zone=normal`
+* [x] Parse `zone=blocked`
+* [x] Parse `zone=restricted`
+* [x] Parse `zone=priority`
+* [x] Parse `color=...`
+* [x] Parse `max_drones=...`
+* [x] Apply default values
+* [x] Support metadata in any order
 
 ## Connection metadata
 
-* [ ] Parse `max_link_capacity`
-* [ ] Apply default capacity of 1
+* [x] Parse `max_link_capacity`
+* [x] Apply default capacity of 1
 
 ## Validation
 
-* [ ] Validate positive drone count
+* [x] Validate positive drone count
 * [ ] Validate unique zone names
-* [ ] Validate integer coordinates
-* [ ] Validate exactly one start zone
-* [ ] Validate exactly one end zone
-* [ ] Validate zone types
-* [ ] Validate positive capacities
+* [x] Validate integer coordinates
+* [x] Validate exactly one start zone
+* [x] Validate exactly one end zone
+* [x] Validate zone types
+* [x] Validate positive capacities
 * [ ] Validate connection endpoints
 * [ ] Reject duplicate connections
-* [ ] Reject invalid metadata
-* [ ] Reject malformed lines
+* [x] Reject invalid metadata
+* [x] Reject malformed lines
 * [ ] Reject forbidden zone-name syntax
 * [ ] Report line number on parsing errors
-* [ ] Report a useful error message
+* [x] Report a useful error message
 
 ## Tests
 

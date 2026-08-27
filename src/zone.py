@@ -4,7 +4,8 @@ class Zone:
     _summary_
     """
     def __init__(self, name: str, coordinate_x: int, coordinate_y: int,
-                 zone: str, color: str, max_drone: str, current_occupancy: list) -> None:
+                 zone: str = "normal", color: str = "blue", max_drone: int = 1,
+                 current_occupancy: list = []) -> None:
         """_summary_
 
         Args:
@@ -20,7 +21,7 @@ class Zone:
         self.y: int = coordinate_y
         self.zone: str = zone
         self.color: str = color
-        self.max_drone: str = max_drone
+        self.max_drone: int = max_drone
         self.current_occupancy: list = current_occupancy
 
     def capacity_checking(self) -> None:

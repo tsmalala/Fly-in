@@ -1,16 +1,20 @@
+from .drone import Drone
+from .zone import Zone
+
 
 class Connection:
     """
     _summary_
     """
-    def __init__(self, zones: str, link: str, drone: list) -> None:
+    def __init__(self, zones: list[Zone], max_link_capacity: int = 1,
+                 drone: list[Drone] = []) -> None:
         """_summary_
         Args:
             zones (str): _description_
             link (str): _description_
         """
-        self.zones: str = zones
-        self.link: str = link
+        self.zones: list[Zone] = zones
+        self.max_link_capacity: int = max_link_capacity
         self.drone: list = drone
 
     def drones_tracker(self) -> None:

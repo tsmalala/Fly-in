@@ -1,5 +1,5 @@
-from src.zone import Zone
-from src.connection import Connection
+from .zone import Zone
+from .connection import Connection
 
 
 class Graph:
@@ -16,6 +16,8 @@ class Graph:
         """
         self.zones: list[Zone] = zones
         self.connections: list[Connection] = connections
+        self.count_end: int = 0
+        self.count_start: int = 0
 
     def adjacency_lists(self) -> None:
         """
@@ -23,26 +25,38 @@ class Graph:
         """
         pass
 
-    def add_zone(self) -> None:
+    def add_zone(self, zone: Zone) -> None:
         """
         _summary_
         """
-        pass
+        self.zones.append(zone)
 
-    def add_connection(self) -> None:
+    def add_connection(self, connection: Connection) -> None:
         """
         _summary_
         """
-        pass
+        self.connections.append(connection)
 
-    def retrieve_zone(self) -> None:
+    def retrieve_zone_by_name(self, zone_name: str) -> Zone | None:
         """
-        _summary_
+        Retrieve a zone by its name.
         """
-        pass
+        for zone in self.zones:
+            if zone.name == zone_name:
+                return zone
+        return None
 
     def retrieve_neighbours(self) -> None:
         """
         _summary_
         """
         pass
+
+    def check_duplication(self) -> None:
+        pass
+
+    def validate_end_start_hub(self) -> None:
+        if self.count_start > 1:
+            raise ValueError("[ERROR]: start_hub duplicate")
+        if self.count_end > 1:
+            raise ValueError("[ERROR]: end_hub duplicate")
