@@ -24,6 +24,8 @@ class Graph:
         self.connections: list[Connection] = connections
         self.count_end: int = 0
         self.count_start: int = 0
+        self.start_hub: str = ""
+        self.end_hub: str = ""
 
     def retrieve_zone_by_name(self, zone_name: str) -> Zone | None:
         """
@@ -143,3 +145,29 @@ class Graph:
             raise ValueError("[ERROR]: missing start_hub")
         if self.count_end == 0:
             raise ValueError("[ERROR]: missing end_hub")
+
+    def retrieve_neighbour(self, zone: Zone) -> list[Zone]:
+        """
+        summary
+        """
+        neighbours: list[Zone] = []
+        for connex in self.connections:
+            for hub in connex.zones:
+                if hub.name == zone.name:
+                    neighbours = list(set(neighbours + connex.zones))
+        return neighbours
+
+    def put_zone_weight(self, zone: Zone) -> None:
+        """
+        summary
+        """
+        neighbours = self.retrieve_neighbour(zone)
+        for hub in neighbours:
+            weight = 1
+            if hub.zone == "restricted":
+                weight = 2
+            if hub.zone == "blocked":
+                continue
+            if hub.weight > zone.weight + weight:
+                hub.weight = zone.weight + weight
+                self.put_zone_weight(hub)

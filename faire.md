@@ -232,11 +232,11 @@ fly-in/
 
 ## Graph
 
-* [ ] Build bidirectional connections
-* [ ] Build adjacency list
-* [ ] Ignore blocked zones during traversal
-* [ ] Detect missing paths
-* [ ] Prevent infinite loops on cycles
+* [X] Build bidirectional connections
+* [X] Build adjacency list
+* [X] Ignore blocked zones during traversal
+* [x] Detect missing paths
+* [x] Prevent infinite loops on cycles
 
 ## Movement cost
 
@@ -251,34 +251,21 @@ blocked    = impossible
 
 Tasks:
 
-* [ ] Create movement-cost logic
-* [ ] Verify cost depends on destination zone
-* [ ] Prevent movement into blocked zones
-* [ ] Handle restricted destinations
+* [x] Create movement-cost logic
+* [x] Verify cost depends on destination zone
+* [x] Prevent movement into blocked zones
+* [x] Handle restricted destinations
 
 ## Bellman Ford
 
-* [ ] Implement pathfinder manually
-* [ ] Reconstruct the final path
-* [ ] Handle unreachable destinations
-* [ ] Add tests for shortest paths
-* [ ] Test cycles
-* [ ] Test multiple possible paths
-* [ ] Test restricted zones
-* [ ] Test blocked zones
-
-## Priority zones
-
-* [ ] Define priority behaviour
-* [ ] Prefer priority routes when costs are equivalent
-* [ ] Test priority path selection
-
-## Path caching
-
-* [ ] Determine whether paths can be cached
-* [ ] Create path cache
-* [ ] Avoid unnecessary recalculation
-* [ ] Document caching strategy
+* [x] Implement pathfinder manually
+* [x] Reconstruct the final path
+* [x] Handle unreachable destinations
+* [x] Add tests for shortest paths
+* [x] Test cycles
+* [x] Test multiple possible paths
+* [x] Test restricted zones
+* [x] Test blocked zones
 
 ## Definition of Done
 

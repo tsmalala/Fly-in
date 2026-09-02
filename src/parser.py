@@ -118,14 +118,16 @@ class Parser:
         """
         if hub_type == "start_hub":
             graph.count_start += 1
+            hub = Parser.parse_hub(data, graph, hub_type)
         elif hub_type == "end_hub":
+            hub = Parser.parse_hub(data, graph, hub_type)
             graph.count_end += 1
-
-        hub = Parser.parse_hub(data)
+        else:
+            hub = Parser.parse_hub(data, graph)
         graph.add_zone(hub)
 
     @staticmethod
-    def parse_hub(data: str) -> Zone:
+    def parse_hub(data: str, graph: Graph, special_hub: str = "") -> Zone:
         """
         Parse a hub configuration and create a Zone instance.
 
@@ -154,6 +156,11 @@ class Parser:
         clean_data = re.sub(r"\[([^\]]+)\]", "", data)
         data_splited: list[str] = clean_data.split()
         name = data_splited[0]
+        if special_hub:
+            if special_hub == "start_hub":
+                graph.start_hub = name
+            elif special_hub == "end_hub":
+                graph.end_hub = name
         if "-" in name:
             raise ValueError("[ERROR]: name can't contain '-'.")
         try:

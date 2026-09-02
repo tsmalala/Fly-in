@@ -5,8 +5,12 @@ from src.graph import Graph
 def main() -> None:
     graph = Graph([], [])
     Parser.parse_file("config.txt", graph)
-    print(graph.zones)
-    print(graph.connections)
+    for element in graph.zones:
+        if element.name == graph.end_hub:
+            element.weight = 0
+    graph.put_zone_weight(graph.retrieve_zone_by_name(graph.end_hub))
+    for e in graph.zones:
+        print(f"Name: {e.name}, weight: {e.weight}")
 
 
 if __name__ == "__main__":

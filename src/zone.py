@@ -23,6 +23,7 @@ class Zone:
         self.color: str = color
         self.max_drone: int = max_drone
         self.current_occupancy: list = current_occupancy
+        self.weight = float('inf')
 
     def capacity_checking(self) -> None:
         """
