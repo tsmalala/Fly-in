@@ -1,6 +1,5 @@
 from .zone import Zone
 from .connection import Connection
-from collections import Counter
 
 
 class Graph:
@@ -103,7 +102,7 @@ class Graph:
             exists between the specified zones.
         """
         for element in self.connections:
-            if Counter(element.zones) == Counter(zones):
+            if set(element.zones) == set(zones):
                 return element
         return None
 

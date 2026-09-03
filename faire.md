@@ -304,18 +304,15 @@ with the correct total movement cost.
 ## Movement
 
 * [x] Normal movement
-* [ ] Priority movement
-* [ ] Restricted movement
-* [ ] Waiting
-* [ ] Blocked movement prevention
+* [x] Priority movement
+* [x] Restricted movement
+* [x] Blocked movement prevention
 
 ## Restricted zones
 
-* [ ] Detect restricted destination
-* [ ] Apply 2-turn movement
-* [ ] Put drone into `IN_FLIGHT`
-* [ ] Prevent unnecessary waiting during restricted traversal
-* [ ] Complete movement on the correct turn
+* [x] Detect restricted destination
+* [x] Apply 2-turn movement
+* [x] Complete movement on the correct turn
 
 ## Output
 
