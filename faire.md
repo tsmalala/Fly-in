@@ -293,19 +293,17 @@ with the correct total movement cost.
 
 ## Simulation engine
 
-* [ ] Create `Simulation` class
-* [ ] Initialize simulation state
-* [ ] Create one drone
-* [ ] Assign a path
-* [ ] Execute turns
-* [ ] Move drone between zones
-* [ ] Track current turn
-* [ ] Detect delivery
-* [ ] Stop when drone reaches end
+* [x] Create `Simulation` class
+* [x] Initialize simulation state
+* [x] Create one drone
+* [x] Execute turns
+* [x] Move drone between zones
+* [x] Track current turn
+* [x] Stop when drone reaches end
 
 ## Movement
 
-* [ ] Normal movement
+* [x] Normal movement
 * [ ] Priority movement
 * [ ] Restricted movement
 * [ ] Waiting

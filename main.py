@@ -1,6 +1,6 @@
 from src.parser import Parser
 from src.graph import Graph
-
+from src.simulation import Simulation
 
 def main() -> None:
     graph = Graph([], [], 0)
@@ -9,9 +9,9 @@ def main() -> None:
         if element.name == graph.end_hub:
             element.weight = 0
     graph.put_zone_weight(graph.retrieve_zone_by_name(graph.end_hub))
-    for e in graph.zones:
-        print(f"Name: {e.name}, weight: {e.weight}")
-    print(graph.nb_drone)
+    simulation = Simulation(graph)
+
+    simulation.simulate()
 
 
 if __name__ == "__main__":

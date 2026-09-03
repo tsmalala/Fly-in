@@ -164,7 +164,7 @@ class Graph:
         for connex in self.connections:
             for hub in connex.zones:
                 if hub.name == zone.name:
-                    neighbours = list(set(neighbours + connex.zones))
+                    neighbours = list(set(neighbours + connex.zones) - set([zone]))
         return neighbours
 
     def put_zone_weight(self, zone: Zone) -> None:
