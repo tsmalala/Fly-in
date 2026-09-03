@@ -29,17 +29,20 @@ class Parser:
                 or invalid data.
             OSError: If the file cannot be opened or read.
         """
+        element: set = set()
         with open(filename, "r") as file:
             for line in file:
                 line = line.strip()
                 line = re.sub(r"#.*", "", line)
                 if not line:
                     continue
-                Parser.parse_line(line, graph)
+                Parser.parse_line(line, graph, element)
+        if not all(value in element for value in ["nb_drones"]):
+            raise ValueError("[ERROR]: config decline!")
         graph.validate_end_start_hub()
 
     @staticmethod
-    def parse_line(line: str, graph: Graph) -> None:
+    def parse_line(line: str, graph: Graph, element: set) -> None:
         """
         Parse a configuration line and update the graph accordingly.
 
@@ -61,7 +64,8 @@ class Parser:
             raise ValueError(f"[ERROR]: {e}")
 
         if _type == "nb_drones":
-            Parser._parse_nb_drones(data)
+            element.add(_type)
+            Parser._parse_nb_drones(data, graph)
             return
 
         if _type in ["hub", "start_hub", "end_hub"]:
@@ -72,11 +76,10 @@ class Parser:
             connection = Parser.parse_connection(data, graph)
             graph.add_connection(connection)
             return
-
         raise ValueError(f"[ERROR]: unknown line type '{_type}'!")
 
     @staticmethod
-    def _parse_nb_drones(data: str) -> None:
+    def _parse_nb_drones(data: str, graph: Graph) -> None:
         """
         Validate the number of drones specified in the configuration.
 
@@ -96,6 +99,7 @@ class Parser:
             raise ValueError("[ERROR]'nb_drones' must be an integer!")
         if nb <= 0:
             raise ValueError("[ERROR]: nb_drones must be strictly positive.")
+        graph.nb_drone = nb
 
     @staticmethod
     def _parse_hub_syntax(data: str, hub_type: str, graph: Graph) -> None:

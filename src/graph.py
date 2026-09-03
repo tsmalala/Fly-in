@@ -12,7 +12,7 @@ class Graph:
     the graph contains exactly one of each.
     """
     def __init__(self, zones: list[Zone],
-                 connections: list[Connection]) -> None:
+                 connections: list[Connection], nb_drone: int) -> None:
         """
         Initializes a graph with a collection of zones and connections.
 
@@ -22,6 +22,7 @@ class Graph:
         """
         self.zones: list[Zone] = zones
         self.connections: list[Connection] = connections
+        self.nb_drone = nb_drone
         self.count_end: int = 0
         self.count_start: int = 0
         self.start_hub: str = ""
@@ -148,7 +149,16 @@ class Graph:
 
     def retrieve_neighbour(self, zone: Zone) -> list[Zone]:
         """
-        summary
+        Retrieve all zones connected to the given zone.
+
+        Searches through the existing connections and returns the zones
+        belonging to connections that contain the specified zone.
+
+        Args:
+            zone: The zone for which neighbouring zones should be retrieved.
+
+        Returns:
+            A list of zones connected to the given zone.
         """
         neighbours: list[Zone] = []
         for connex in self.connections:
@@ -159,7 +169,16 @@ class Graph:
 
     def put_zone_weight(self, zone: Zone) -> None:
         """
-        summary
+        Recursively update the weights of zones connected to the given zone.
+
+        Each accessible neighbouring zone receives a weight based on the
+        current zone's weight. Restricted zones have an additional cost,
+        while blocked zones are ignored. A neighbouring zone is updated
+        only when the newly calculated weight is lower than its current
+        weight.
+
+        Args:
+            zone: The zone from which neighbouring zone weights are updated.
         """
         neighbours = self.retrieve_neighbour(zone)
         for hub in neighbours:

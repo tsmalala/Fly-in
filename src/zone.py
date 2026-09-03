@@ -1,3 +1,4 @@
+from .drone import Drone
 
 class Zone:
     """
@@ -5,7 +6,7 @@ class Zone:
     """
     def __init__(self, name: str, coordinate_x: int, coordinate_y: int,
                  zone: str = "normal", color: str = "blue", max_drone: int = 1,
-                 current_occupancy: list = []) -> None:
+                 current_occupancy: list[Drone] = []) -> None:
         """_summary_
 
         Args:
@@ -22,7 +23,7 @@ class Zone:
         self.zone: str = zone
         self.color: str = color
         self.max_drone: int = max_drone
-        self.current_occupancy: list = current_occupancy
+        self.current_occupancy: list[Drone] = current_occupancy
         self.weight = float('inf')
 
     def capacity_checking(self) -> None:
