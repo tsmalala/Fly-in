@@ -344,18 +344,17 @@ A single drone can travel from start to end correctly on all basic maps.
 
 ## Drone initialization
 
-* [ ] Create all drones
-* [ ] Assign unique IDs
-* [ ] Place all drones at start
-* [ ] Allow unlimited initial occupancy at start
+* [x] Create all drones
+* [x] Assign unique IDs
+* [x] Place all drones at start
+* [x] Allow unlimited initial occupancy at start
 
 ## Zone capacity
 
-* [ ] Check destination capacity
-* [ ] Count drones leaving the zone
-* [ ] Free capacity before validating incoming drones
+* [x] Check destination capacity
+* [x] Free capacity before validating incoming drones
 * [ ] Allow multiple drones in zones with sufficient capacity
-* [ ] Allow unlimited drones at end
+* [x] Allow unlimited drones at end
 
 ## Connection capacity
 

@@ -10,7 +10,7 @@ def main() -> None:
             element.weight = 0
     graph.put_zone_weight(graph.retrieve_zone_by_name(graph.end_hub))
     simulation = Simulation(graph)
-
+    # print(graph.retrieve_zone_by_name(graph.start_hub).current_occupancy)
     simulation.simulate()
 
 

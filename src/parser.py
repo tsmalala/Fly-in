@@ -200,7 +200,7 @@ class Parser:
                             raise ValueError("[ERROR]: max_drones must be positive")
                 else:
                     raise ValueError("[ERROR] invalid metadata")
-        return Zone(name, x, y, zone, color, max_drones)
+        return Zone(name, x, y, zone, color, max_drones, [])
 
     @staticmethod
     def parse_connection(data: str, graph: Graph) -> Connection:
