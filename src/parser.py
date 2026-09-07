@@ -177,7 +177,7 @@ class Parser:
             raise ValueError("[ERROR] Coordinate y must be an integer!")
         zone = ""
         color = ""
-        max_drones = 0
+        max_drones = 1
         if match:
             metadata = match.group(1)
             list_medata = metadata.split()

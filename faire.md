@@ -353,15 +353,15 @@ A single drone can travel from start to end correctly on all basic maps.
 
 * [x] Check destination capacity
 * [x] Free capacity before validating incoming drones
-* [ ] Allow multiple drones in zones with sufficient capacity
+* [x] Allow multiple drones in zones with sufficient capacity
 * [x] Allow unlimited drones at end
 
 ## Connection capacity
 
-* [ ] Track connection occupancy
-* [ ] Validate `max_link_capacity`
-* [ ] Prevent excessive simultaneous traversal
-* [ ] Release connection capacity correctly
+* [x] Track connection occupancy
+* [x] Validate `max_link_capacity`
+* [x] Prevent excessive simultaneous traversal
+* [x] Release connection capacity correctly
 
 ## Simultaneous movement
 
@@ -390,9 +390,9 @@ Tasks:
 
 ## Delivery
 
-* [ ] Remove delivered drones from active simulation
-* [ ] Keep end-zone occupancy unlimited
-* [ ] Detect completion when all drones arrive
+* [x] Remove delivered drones from active simulation
+* [x] Keep end-zone occupancy unlimited
+* [x] Detect completion when all drones arrive
 
 ## Definition of Done
 

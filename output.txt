@@ -1,0 +1,11 @@
+.venv/bin/python main.py
+D1-hub1 D2-hub1
+D1-hub2 D3-hub1 D4-hub1
+D1-hub4 D2-hub2 D5-hub1
+D1-hub5 D2-hub4 D3-hub2
+D1-hub7 D2-hub5 D3-hub4 D4-hub2
+D1-goal D2-hub7 D3-hub5 D4-hub4 D5-hub2
+D2-goal D3-hub7 D4-hub5 D5-hub4
+D3-goal D4-hub7 D5-hub5
+D4-goal D5-hub7
+D5-goal

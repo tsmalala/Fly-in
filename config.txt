@@ -1,7 +1,7 @@
 nb_drones: 5
 
 start_hub: start 0 0 [color=green]
-hub: hub1 1 0 [color=blue max_drones=2 zone=restricted]
+hub: hub1 1 0 [color=blue max_drones=3 zone=restricted]
 hub: hub2 2 -1 [color=blue zone=priority]
 hub: hub3 2 1 [color=blue]
 hub: hub4 3 0 [color=blue max_drones=2]
@@ -15,8 +15,8 @@ connection: hub1-hub2
 connection: hub1-hub3
 connection: hub3-hub4
 connection: hub2-hub4
-connection: hub4-hub5
+connection: hub4-hub5 [max_link_capacity=2]
 connection: hub4-hub6
 connection: hub5-hub7
 connection: hub6-hub7
-connection: hub7-goal [max_link_capacity=2]
+connection: hub7-goal
