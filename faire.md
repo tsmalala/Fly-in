@@ -375,18 +375,18 @@ Implement a two-phase turn:
 
 Tasks:
 
-* [ ] Calculate candidate moves
-* [ ] Detect zone conflicts
-* [ ] Detect connection conflicts
-* [ ] Account for drones leaving zones
-* [ ] Apply all valid movements simultaneously
-* [ ] Handle drones that must wait
+* [X] Calculate candidate moves
+* [X] Detect zone conflicts
+* [X] Detect connection conflicts
+* [X] Account for drones leaving zones
+* [X] Apply all valid movements simultaneously
+* [X] Handle drones that must wait
 
 ## Waiting
 
-* [ ] Allow a drone to stay in place
-* [ ] Ensure waiting does not violate rules
-* [ ] Avoid unnecessary waiting
+* [X] Allow a drone to stay in place
+* [x] Ensure waiting does not violate rules
+* [x] Avoid unnecessary waiting
 
 ## Delivery
 
@@ -396,11 +396,11 @@ Tasks:
 
 ## Definition of Done
 
-* [ ] Multiple drones can run simultaneously
-* [ ] No zone capacity violation
-* [ ] No connection capacity violation
-* [ ] No invalid collisions
-* [ ] Simulation terminates correctly
+* [x] Multiple drones can run simultaneously
+* [x] No zone capacity violation
+* [x] No connection capacity violation
+* [x] No invalid collisions
+* [x] Simulation terminates correctly
 
 ---
 

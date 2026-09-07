@@ -1,7 +1,7 @@
 nb_drones: 5
 
 start_hub: start 0 0 [color=green]
-hub: hub1 1 0 [color=blue max_drones=3 zone=restricted]
+hub: hub1 1 0 [color=blue max_drones=1 zone=restricted]
 hub: hub2 2 -1 [color=blue zone=priority]
 hub: hub3 2 1 [color=blue]
 hub: hub4 3 0 [color=blue max_drones=2]

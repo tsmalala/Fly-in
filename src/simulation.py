@@ -37,10 +37,19 @@ class Simulation:
                 next_hub = sorted(neighbours, key=lambda n: (n.weight, n.zone != "priority"))[0]
                 current_connection = self.graph.retrieve_connection_by_zones([next_hub, current_zone])
 
-                if (len(next_hub.current_occupancy) < next_hub.max_drone or next_hub.name == self.graph.end_hub) and link_capacity[current_connection] > 0:
+                if (next_hub.zone == "restricted" and link_capacity[current_connection] > 0
+                        and drone not in next_hub.in_link):
+                    if next_hub.restricted_link_checking():
+                        next_hub.in_link.append(drone)
+                        link_capacity[current_connection] -= 1
+                        move.append(f"D{drone.id}-{current_connection.zones[0].name}-{current_connection.zones[1].name}")
+                elif ((next_hub.capacity_checking() or next_hub.name == self.graph.end_hub
+                     ) and link_capacity[current_connection] > 0):
                     next_hub.current_occupancy.append(drone)
                     drone.current_zone = next_hub.name
                     current_zone.current_occupancy.remove(drone)
                     move.append(f"D{drone.id}-{drone.current_zone}")
+                    if drone in next_hub.in_link:
+                        next_hub.in_link.remove(drone)
                     link_capacity[current_connection] -= 1
             print(" ".join(move))

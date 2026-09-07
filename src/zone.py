@@ -25,18 +25,19 @@ class Zone:
         self.max_drone: int = max_drone
         self.current_occupancy: list[Drone] = current_occupancy
         self.weight = float('inf')
+        self.in_link: list[Drone] = []
 
-    def capacity_checking(self) -> None:
+    def capacity_checking(self) -> bool:
         """
         _summary_
         """
-        pass
+        return len(self.current_occupancy) < self.max_drone 
 
-    def entering_zone(self) -> None:
+    def restricted_link_checking(self) -> None:
         """
         _summary_
         """
-        pass
+        return len(self.in_link) < self.max_drone
 
     def leaving_zone(self) -> None:
         """
