@@ -412,23 +412,13 @@ Tasks:
 
 This is the main optimization sprint.
 
-## Baseline scheduler
-
-* [ ] Create `Scheduler` class
-* [ ] Generate candidate movement for each drone
-* [ ] Rank possible movements
-* [ ] Detect conflicts
-* [ ] Resolve conflicts
-* [ ] Decide which drones wait
-* [ ] Avoid deadlocks
-
 ## Multiple paths
 
-* [ ] Find several possible routes
-* [ ] Compare path costs
-* [ ] Calculate path capacities
-* [ ] Identify bottlenecks
-* [ ] Distribute drones between routes
+* [x] Find several possible routes
+* [x] Compare path costs
+* [x] Calculate path capacities
+* [x] Identify bottlenecks
+* [x] Distribute drones between routes
 
 Example:
 
@@ -442,33 +432,26 @@ START → C → D → END
 
 Distribute drones according to:
 
-* [ ] Path length
-* [ ] Zone capacity
-* [ ] Connection capacity
-* [ ] Restricted zones
-* [ ] Current congestion
-* [ ] Priority zones
-
-## Congestion
-
-* [ ] Detect congested zones
-* [ ] Detect congested connections
-* [ ] Penalize congested paths
-* [ ] Prefer less congested paths
+* [x] Path length
+* [x] Zone capacity
+* [x] Connection capacity
+* [x] Restricted zones
+* [x] Current congestion
+* [x] Priority zones
 
 ## Dynamic scheduling
 
-* [ ] Re-evaluate blocked movements
-* [ ] Allow waiting strategically
-* [ ] Re-route drones when useful
-* [ ] Avoid unnecessary recalculation
-* [ ] Prevent deadlocks
+* [x] Re-evaluate blocked movements
+* [x] Allow waiting strategically
+* [x] Re-route drones when useful
+* [x] Avoid unnecessary recalculation
+* [x] Prevent deadlocks
 
 ## Performance
 
-* [ ] Benchmark easy maps
-* [ ] Benchmark medium maps
-* [ ] Benchmark hard maps
+* [x] Benchmark easy maps
+* [x] Benchmark medium maps
+* [x] Benchmark hard maps
 * [ ] Record number of turns
 * [ ] Record average drone turns
 * [ ] Record total path cost

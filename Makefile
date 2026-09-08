@@ -10,7 +10,7 @@ install:
 	$(pip) install -r requirements.txt
 
 run:
-	$(python) main.py
+	$(python) main.py config.txt
 
 debug:
 	$(python) -m pdb main.py
