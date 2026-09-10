@@ -10,5 +10,7 @@ class Drone:
             id (int): _description_
             current_zone (str): _description_
         """
+        from .zone import Zone
         self.id: int = id
         self.current_zone: str = current_zone
+        self.next_hub: Zone | None = None

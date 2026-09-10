@@ -50,6 +50,19 @@ class Simulation:
             neighbours = sorted(neighbours, key=lambda n: (n.weight,
                                                            n.zone != "priority"
                                                            ))
+            if drone.next_hub:
+                current_connection = (
+                    self.graph.retrieve_connection_by_zones([drone.next_hub,
+                                                                current_zone])
+                                                                )
+
+                drone.next_hub.in_link.remove(drone)
+                drone.next_hub.current_occupancy.append(drone)
+                drone.current_zone = drone.next_hub.name
+                link_capacity[current_connection] -= 1
+                move.append(f"D{drone.id}-{drone.current_zone}")
+                drone.next_hub = None
+                continue
             for next_hub in neighbours:
                 if next_hub.weight < current_zone.weight:
                     current_connection = (
@@ -62,6 +75,8 @@ class Simulation:
                             and drone not in next_hub.in_link):
                         if next_hub.restricted_link_checking():
                             next_hub.in_link.append(drone)
+                            current_zone.current_occupancy.remove(drone)
+                            drone.next_hub = next_hub
                             link_capacity[current_connection] -= 1
                             move.append(f"D{drone.id}-"
                                         f"{current_connection.zones[0].name}-"

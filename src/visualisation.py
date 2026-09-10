@@ -1,4 +1,3 @@
-import time
 import pygame as py
 from pygame import Surface
 from .zone import Zone
@@ -70,6 +69,8 @@ class Visualisation:
         origin_y = self.window_height // 2
         hub = self.simulation.graph.retrieve_zone_by_name(drone.current_zone)
 
+        if drone not in hub.current_occupancy:
+            return
         index = hub.current_occupancy.index(drone)
         screen_x = (origin_x + hub.x * tile_size - scroll_x) + 100 - (index % 5) * 15
         screen_y = (origin_y + hub.y * tile_size - scroll_y) + 100 - (index // 5) * 30
