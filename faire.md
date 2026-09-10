@@ -471,23 +471,13 @@ The scheduler produces valid simulations and improves upon the naïve shortest-p
 
 ## Graphical representation
 
-* [ ] Display map information
-* [ ] Display zones
-* [ ] Display connections
-* [ ] Display drone positions
-* [ ] Display current turn
-* [ ] Display delivered drones
-* [ ] Display occupancy
-
-## Colours
-
-* [ ] Start colour
-* [ ] End colour
-* [ ] Normal zone colour
-* [ ] Restricted zone colour
-* [ ] Priority zone colour
-* [ ] Blocked zone colour
-* [ ] Drone colour
+* [x] Display map information
+* [x] Display zones
+* [x] Display connections
+* [x] Display drone positions
+* [x] Display current turn
+* [x] Display delivered drones
+* [x] Display occupancy
 
 ## Definition of Done
 

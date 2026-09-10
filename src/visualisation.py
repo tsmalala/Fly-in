@@ -26,7 +26,12 @@ class Visualisation:
         screen_x = (origin_x + hub.x * tile_size - scroll_x)
         screen_y = (origin_y + hub.y * tile_size - scroll_y)
 
-        self.window.blit(image, (screen_x, screen_y))
+        colored_image = image.copy()
+        hub_color = hub.color
+        if hub_color == "rainbow":
+            hub_color = "white"
+        colored_image.fill(hub_color, special_flags=py.BLEND_RGBA_MULT)
+        self.window.blit(colored_image, (screen_x, screen_y))
 
     def draw_hubs(self, image: Surface, scroll_x: int, scroll_y: int):
         """
@@ -99,7 +104,7 @@ class Visualisation:
 
         end_zone = (self.simulation.graph.retrieve_zone_by_name(self.simulation.graph.end_hub))
 
-        fond = py.image.load("fond.jpg")
+        fond = py.image.load("bg.png")
         hub_image = py.image.load("hub.png")
         hub_image = py.transform.scale(hub_image,(200, 200))
         drone_img = py.image.load("star_wars.png")
@@ -207,7 +212,7 @@ class Visualisation:
 
             self.window.fill((0, 0, 0))
 
-            # self.window.blit(fond, (-scroll_x, -scroll_y))
+            self.draw_background(fond, scroll_x, scroll_y)
             self.draw_hubs(hub_image, scroll_x, scroll_y)
             self.draw_connections(hub_image, scroll_x, scroll_y)
             self.draw_drones(drone_img, scroll_x, scroll_y, hub_image)
@@ -234,3 +239,26 @@ class Visualisation:
             py.display.flip()
 
         print(f"\nTotal turns: {nb_turn}")
+
+    def draw_background(self, fond: Surface, scroll_x: int, scroll_y: int) -> None:
+        """Dessine le fond en répétition sur tout l'écran."""
+
+        tile_width = fond.get_width()
+        tile_height = fond.get_height()
+
+        # Décalage du fond avec le scroll
+        offset_x = -scroll_x % tile_width
+        offset_y = -scroll_y % tile_height
+
+        # Nombre de tuiles nécessaires
+        for x in range(
+            int(offset_x) - tile_width,
+            self.window_width,
+            tile_width
+        ):
+            for y in range(
+                int(offset_y) - tile_height,
+                self.window_height,
+                tile_height
+            ):
+                self.window.blit(fond, (x, y))

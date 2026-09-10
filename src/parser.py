@@ -175,8 +175,8 @@ class Parser:
             y = int(data_splited[2])
         except ValueError:
             raise ValueError("[ERROR] Coordinate y must be an integer!")
-        zone = ""
-        color = ""
+        zone = "normal"
+        color = "blue"
         max_drones = 1
         if match:
             metadata = match.group(1)

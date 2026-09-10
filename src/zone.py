@@ -38,9 +38,3 @@ class Zone:
         _summary_
         """
         return len(self.in_link) < self.max_drone
-
-    def leaving_zone(self) -> None:
-        """
-        _summary_
-        """
-        pass

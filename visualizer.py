@@ -19,8 +19,8 @@ def main() -> None:
 
     py.init()
 
-    WINDOW_WIDTH = 1600
-    WINDOW_HEIGHT = 800
+    WINDOW_WIDTH = 1800
+    WINDOW_HEIGHT = 900
 
     window = py.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
     py.display.set_caption("Fly-in")
