@@ -1,7 +1,9 @@
+import time
 import pygame as py
 from pygame import Surface
 from .zone import Zone
 from .simulation import Simulation
+from .drone import Drone
 
 
 class Visualisation:
@@ -48,11 +50,32 @@ class Visualisation:
 
         py.draw.line(self.window, "white", (start_x, start_y), (end_x, end_y), 1)
 
-    def draw_connections(self,image: Surface , scroll_x: int, scroll_y: int) -> None:
+    def draw_connections(self, image: Surface , scroll_x: int, scroll_y: int) -> None:
         """
         """
         for connection in self.simulation.graph.connections:
             self.draw_connection(image, connection.zones, scroll_x, scroll_y)
+
+    def draw_drone(self, drone: Drone, drone_img, scroll_x, scroll_y, image: Surface) -> None:
+        """
+        """
+        tile_size = image.get_width()
+
+        origin_x = self.window_width // 2
+        origin_y = self.window_height // 2
+        hub = self.simulation.graph.retrieve_zone_by_name(drone.current_zone)
+
+        index = hub.current_occupancy.index(drone)
+        screen_x = (origin_x + hub.x * tile_size - scroll_x) + 100 - (index % 5) * 15
+        screen_y = (origin_y + hub.y * tile_size - scroll_y) + 100 - (index // 5) * 30
+
+        self.window.blit(drone_img, (screen_x, screen_y))
+
+    def draw_drones(self, drone_img: Surface, scroll_x: int, scroll_y: int, image: Surface) -> None:
+        """
+        """
+        for drone in self.simulation.all_drone:
+            self.draw_drone(drone, drone_img, scroll_x, scroll_y, image)
 
     def visualizer(self) -> None:
         """
@@ -79,8 +102,12 @@ class Visualisation:
         fond = py.image.load("fond.jpg")
         hub_image = py.image.load("hub.png")
         hub_image = py.transform.scale(hub_image,(200, 200))
+        drone_img = py.image.load("star_wars.png")
+        drone_img = py.transform.scale(drone_img, (50, 50))
 
+        last_step_time = py.time.get_ticks()
         while running:
+            current_time = py.time.get_ticks()
             scrollbar_vertical = py.Rect(self.window_width - BAR_SIZE, 0,
                 BAR_SIZE, self.window_height - BAR_SIZE)
 
@@ -162,7 +189,7 @@ class Visualisation:
             scroll_x = max(0, min(scroll_x, max_scroll_x))
             scroll_y = max(0, min(scroll_y, max_scroll_y))
 
-            if len(end_zone.current_occupancy) < self.simulation.graph.nb_drone:
+            if (current_time - last_step_time >= 1000 and len(end_zone.current_occupancy) < self.simulation.graph.nb_drone):
 
                 move: list[str] = []
 
@@ -174,13 +201,16 @@ class Visualisation:
 
                 self.simulation.step(move, link_capacity)
                 nb_turn += 1
+
                 print(" ".join(move))
+                last_step_time = py.time.get_ticks()
 
             self.window.fill((0, 0, 0))
 
             # self.window.blit(fond, (-scroll_x, -scroll_y))
             self.draw_hubs(hub_image, scroll_x, scroll_y)
             self.draw_connections(hub_image, scroll_x, scroll_y)
+            self.draw_drones(drone_img, scroll_x, scroll_y, hub_image)
 
             if max_scroll_y > 0:
                 cursor_y = int((scroll_y / max_scroll_y) * max_cursor_y)
