@@ -452,10 +452,10 @@ Distribute drones according to:
 * [x] Benchmark easy maps
 * [x] Benchmark medium maps
 * [x] Benchmark hard maps
-* [ ] Record number of turns
-* [ ] Record average drone turns
-* [ ] Record total path cost
-* [ ] Compare against subject targets
+* [x] Record number of turns
+* [x] Record average drone turns
+* [x] Record total path cost
+* [x] Compare against subject targets
 
 ## Definition of Done
 
@@ -493,105 +493,102 @@ A peer can understand the simulation by the visualizer.
 
 ## Unit tests
 
-* [ ] Zone tests
-* [ ] Connection tests
-* [ ] Drone tests
-* [ ] Graph tests
-* [ ] Parser tests
-* [ ] Pathfinding tests
-* [ ] Scheduler tests
-* [ ] Simulation tests
-* [ ] Display tests where useful
+* [x] Zone tests
+* [x] Connection tests
+* [x] Drone tests
+* [x] Graph tests
+* [x] Parser tests
+* [x] Pathfinding tests
+* [x] Scheduler tests
+* [x] Simulation tests
+* [x] Display tests where useful
 
 ## Edge cases
 
-* [ ] One drone
-* [ ] Many drones
-* [ ] No path
-* [ ] One possible path
-* [ ] Multiple paths
-* [ ] Blocked route
-* [ ] Restricted route
-* [ ] Priority route
-* [ ] Zone capacity = 1
-* [ ] Zone capacity > 1
-* [ ] Connection capacity = 1
-* [ ] Connection capacity > 1
-* [ ] Cyclic graph
-* [ ] Dead end
-* [ ] Multiple bottlenecks
-* [ ] Start connected directly to end
-* [ ] Large drone count
+* [x] One drone
+* [x] Many drones
+* [x] No path
+* [x] One possible path
+* [x] Multiple paths
+* [x] Blocked route
+* [x] Restricted route
+* [x] Priority route
+* [x] Zone capacity = 1
+* [x] Zone capacity > 1
+* [x] Connection capacity = 1
+* [x] Connection capacity > 1
+* [x] Cyclic graph
+* [x] Dead end
+* [x] Multiple bottlenecks
+* [x] Start connected directly to end
+* [x] Large drone count
 
 ## Static analysis
 
-* [ ] Run `flake8 .`
-* [ ] Fix all flake8 errors
-* [ ] Run required mypy command
-* [ ] Fix all mypy errors
-* [ ] Remove unnecessary `# type: ignore`
-* [ ] Add missing type hints
-* [ ] Check return types
-* [ ] Check class attributes
+* [x] Run `flake8 .`
+* [x] Fix all flake8 errors
+* [x] Run required mypy command
+* [x] Fix all mypy errors
+* [x] Remove unnecessary `# type: ignore`
+* [x] Add missing type hints
+* [x] Check return types
+* [x] Check class attributes
 
 ## Exception handling
 
-* [ ] Handle invalid input
-* [ ] Handle missing map file
-* [ ] Handle invalid simulation state
-* [ ] Handle no-path situations
-* [ ] Prevent unhandled crashes
-* [ ] Use context managers for file access
+* [x] Handle invalid input
+* [x] Handle missing map file
+* [x] Handle invalid simulation state
+* [x] Handle no-path situations
+* [x] Prevent unhandled crashes
+* [x] Use context managers for file access
 
 ## Documentation
 
 * [ ] Complete README
-* [ ] Add project description
-* [ ] Add installation instructions
-* [ ] Add execution instructions
-* [ ] Explain map format
-* [ ] Explain architecture
-* [ ] Explain pathfinding
-* [ ] Explain scheduling
-* [ ] Explain optimization
-* [ ] Explain complexity
-* [ ] Explain visualisation
-* [ ] Add benchmark results
-* [ ] Add resources
-* [ ] Document AI usage
-* [ ] Ensure README is in English
-* [ ] Verify required first line
+* [x] Add project description
+* [x] Add installation instructions
+* [x] Add execution instructions
+* [x] Explain map format
+* [x] Explain architecture
+* [x] Explain pathfinding
+* [x] Explain scheduling
+* [x] Explain optimization
+* [x] Explain complexity
+* [x] Explain visualisation
+* [x] Add benchmark results
+* [x] Add resources
+* [x] Document AI usage
+* [x] Ensure README is in English
+* [x] Verify required first line
 
 ## Peer-review preparation
 
 Be able to explain:
 
-* [ ] Why the project is object-oriented
-* [ ] Why you chose your pathfinding algorithm
-* [ ] How movement costs work
-* [ ] How restricted zones work
-* [ ] How zone capacity works
-* [ ] How connection capacity works
-* [ ] How simultaneous movement works
-* [ ] How waiting works
-* [ ] How deadlocks are avoided
-* [ ] How drones are distributed
-* [ ] How paths are cached
-* [ ] Time complexity
-* [ ] Memory complexity
-* [ ] Why your scheduler is efficient
+* [x] Why the project is object-oriented
+* [x] Why you chose your pathfinding algorithm
+* [x] How movement costs work
+* [x] How restricted zones work
+* [x] How zone capacity works
+* [x] How connection capacity works
+* [x] How simultaneous movement works
+* [x] How drones are distributed
+* [x] How paths are cached
 
 ## Final checks
 
-* [ ] `make install`
-* [ ] `make run`
-* [ ] `make debug`
-* [ ] `make lint`
-* [ ] `make clean`
-* [ ] Test every provided map
+* [x] `make install`
+* [x] `make run`
+* [x] `make debug`
+* [x] `make lint`
+* [x] `make clean`
+* [x] Test every provided map
 * [ ] Check Git status
 * [ ] Remove temporary files
 * [ ] Verify only required project files are committed
+* [ ] Remove faire.md
+* [x] Extract all files in the src/ and place all the files at the root of the repository
 
 ---
 

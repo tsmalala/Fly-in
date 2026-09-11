@@ -1,5 +1,5 @@
-from .zone import Zone
-from .connection import Connection
+from zone import Zone
+from connection import Connection
 
 
 class Graph:
@@ -83,22 +83,27 @@ class Graph:
         if self.retrieve_zone_by_name(zone.name):
             raise ValueError(f"[ERROR]: zone '{zone.name}' is duplicate.")
         if self.retrieve_zone_by_position(zone.x, zone.y):
-            raise ValueError(f"[ERROR]: coordinates of '{zone.name}' already exist.")
+            raise ValueError(f"[ERROR]: coordinates of '{zone.name}' \
+                             already exist.")
         self.zones.append(zone)
 
-    def retrieve_connection_by_zones(self, zones: list[Zone]) -> Connection | None:
+    def retrieve_connection_by_zones(self, zones: list[Zone]
+                                     ) -> Connection | None:
         """
         Retrieves a connection between the specified zones.
 
-        Searches through the collection of connections and returns the connection
-        whose zones match the given zones, regardless of their order. Returns None
+        Searches through the collection of connections
+        and returns the connection
+        whose zones match the given zones, regardless of their order.
+        Returns None
         if no matching connection is found.
 
         Args:
             zones (list[Zone]): The zones associated with the connection.
 
         Returns:
-            Connection | None: The matching connection, or None if no connection
+            Connection | None: The matching connection, or None
+            if no connection
             exists between the specified zones.
         """
         for element in self.connections:
@@ -118,11 +123,13 @@ class Graph:
             connection (Connection): The connection to add.
 
         Raises:
-            ValueError: If a connection between the specified zones already exists.
+            ValueError: If a connection between the specified zones
+            already exists.
         """
         if self.retrieve_connection_by_zones(connection.zones):
             raise ValueError(f"[ERROR]: connection between "
-                             f"'{connection.zones[0].name}' and '{connection.zones[1].name}' "
+                             f"'{connection.zones[0].name}' and '{
+                                 connection.zones[1].name}' "
                              f"already exists.")
         self.connections.append(connection)
 
@@ -163,7 +170,8 @@ class Graph:
         for connex in self.connections:
             for hub in connex.zones:
                 if hub.name == zone.name:
-                    neighbours = list(set(neighbours + connex.zones) - set([zone]))
+                    neighbours = list(
+                        set(neighbours + connex.zones) - set([zone]))
         return neighbours
 
     def put_zone_weight(self, zone: Zone) -> None:

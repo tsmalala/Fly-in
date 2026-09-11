@@ -1,7 +1,7 @@
-from .zone import Zone
-from .connection import Connection
-from .graph import Graph
 import re
+from zone import Zone
+from graph import Graph
+from connection import Connection
 
 
 class Parser:
@@ -29,7 +29,7 @@ class Parser:
                 or invalid data.
             OSError: If the file cannot be opened or read.
         """
-        element: set = set()
+        element: set[str] = set()
         with open(filename, "r") as file:
             for line in file:
                 line = line.strip()
@@ -42,7 +42,7 @@ class Parser:
         graph.validate_end_start_hub()
 
     @staticmethod
-    def parse_line(line: str, graph: Graph, element: set) -> None:
+    def parse_line(line: str, graph: Graph, element: set[str]) -> None:
         """
         Parse a configuration line and update the graph accordingly.
 
@@ -197,7 +197,8 @@ class Parser:
                                          "integer!")
                     else:
                         if max_drones <= 0:
-                            raise ValueError("[ERROR]: max_drones must be positive")
+                            raise ValueError("[ERROR]: max_drones must \
+                                             be positive")
                 else:
                     raise ValueError("[ERROR] invalid metadata")
         return Zone(name, x, y, zone, color, max_drones, [])
@@ -238,7 +239,7 @@ class Parser:
                 zones_list.append(name)
             else:
                 raise ValueError(f"[ERROR]: {hub} doesn't exit")
-        
+
         match = re.search(r"\[([^\]]+)\]", data)
         max_link_capacity = 1
         if match:
